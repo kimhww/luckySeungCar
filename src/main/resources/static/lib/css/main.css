@@ -1,0 +1,96 @@
+.container {
+  background: #fff;
+  padding: 25px 35px;
+  border-radius: 12px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+  text-align: center;
+  width: 320px;
+}
+
+h2 {
+  margin-bottom: 15px;
+  color: #0071BE;
+  font-size: 20px;
+}
+
+input {
+  width: 100px;
+  padding: 8px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  text-align: center;
+  font-size: 15px;
+}
+
+button {
+  margin-top: 12px;
+  padding: 8px 16px;
+  background-color: #0071BE;
+  border: none;
+  border-radius: 6px;
+  color: white;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+button:hover {
+  background-color: #005a94;
+}
+
+#display {
+  margin-top: 20px;
+  font-size: 17px;
+  color: #333;
+  font-weight: bold;
+  display: none;
+}
+
+.rating-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background: #f9fbfd;
+}
+
+.icon {
+  font-size: 22px;
+}
+
+.emoji {
+  font-size: 36px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.star {
+  animation: jumpStar 2.4s cubic-bezier(0.55, 0.08, 0.45, 1.1) infinite;
+}
+
+.wrench {
+  animation: jumpWrench 2.4s cubic-bezier(0.55, 0.08, 0.45, 1.1) infinite;
+  animation-delay: 1.2s;
+}
+
+@keyframes jumpStar {
+  0%   { transform: translateY(0); }
+  20%  { transform: translateY(-12px); }
+  50%  { transform: translateY(0); }
+  100% { transform: translateY(0); }
+}
+
+/* 🔧 반동 없이 부드러운 점프 */
+@keyframes jumpWrench {
+  0%   { transform: translateY(0); }
+  20%  { transform: translateY(-12px); }
+  50%  { transform: translateY(0); }
+  100% { transform: translateY(0); }
+}
+
+

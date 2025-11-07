@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<div th:fragment="HeaderFragment">
+    <header>
+        <a class="logo" th:href="@{/main/index}">
+            <!--<img class="logo" th:src="@{/lib/images/main/kangnamUnivLogo.png}" alt="강남대학교 로고">-->
+            럭키승카
+        </a>
+        <h1>
+            <a class="title" th:href="@{/main/index}">럭키승카</a>
+        </h1>
+    </header>
+    <!--<nav id="topMenu" style="border-radius: 8px;">
+        <ul>
+            <li>
+                <a class="menuLink"
+                   th:classappend="${#httpServletRequest.requestURI.contains('/graduate/intro') ? 'active' : ''}"
+                   th:href="@{/graduate/intro}">유의사항
+                </a>
+            </li>
+            <li class="heigthbar"></li>
+            <li>
+                <a class="menuLink"
+                   th:classappend="${#httpServletRequest.requestURI.contains('/graduate/user/write') ? 'active' : ''}"
+                   th:href="@{/graduate/user/write}">원서작성
+                </a>
+            </li>
+            <li class="heigthbar"></li>
+            <li>
+                <a class="menuLink"
+                   th:classappend="${#httpServletRequest.requestURI.contains('/graduate/user/payment') ? 'active' : ''}"
+                   th:href="@{/graduate/user/payment}">가상계좌
+                </a>
+            </li>
+            <li class="heigthbar"></li>
+            <li>
+                <a class="menuLink"
+                   th:classappend="${#httpServletRequest.requestURI.contains('/graduate/user/check') ? 'active' : ''}"
+                   th:href="@{/graduate/user/check}">접수확인
+                </a>
+            </li>
+            <th:block th:if="${session.LOGIN_USER == null}">
+                <li class="heigthbar"></li>
+                <li>
+                    <a class="menuLink"
+                       th:href="@{/login/loginForm}">로그인
+                    </a>
+                </li>
+            </th:block>
+        </ul>
+    </nav>-->
+</div>
+</html>
