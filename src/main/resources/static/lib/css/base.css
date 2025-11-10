@@ -1,8 +1,97 @@
+html{
+    height:100%;
+}
+
+.container {
+	padding: 20px;
+	flex: 1;
+}
+
 body {
-  font-family: Arial, sans-serif;
-  background-color: #f4f6f9;
+    font-family: "Pretendard", "Noto Sans KR", sans-serif;
+    background-color: #f4f6f9;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 80px;
+    height:100%;
+}
+
+.header {
+    width: 100%;
+    padding: 20px 0;
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    position:relative;
+}
+
+.header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    vertical-align:middle;
+    gap: 20px;
+}
+
+.logo img {
+    height: 50px;
+    transition: transform 0.3s ease;
+}
+.logo:hover img {
+    transform: scale(1.05);
+}
+
+.divider {
+    width: 1px;
+    height: 40px;
+    background-color: #ccc;
+    opacity: 0.6;
+}
+
+.title {
+    color: #333;
+    font-size: 1.8rem;
+    font-weight: 600;
+    text-decoration: none;
+    letter-spacing: -0.5px;
+    transition: color 0.3s ease;
+    text-align:center;
+    margin: 0 auto;
+    line-height:50px;
+}
+.title:hover {
+    color: #3ba8be;
+}
+
+/* 푸터 전체 */
+.footer {
+  width: 100%;
+  padding: 20px 0;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 80px;
+  justify-content: center; /* 가로 중앙 */
+  align-items: center;     /* 세로 중앙 */
+  font-family: "Pretendard", "Noto Sans KR", sans-serif;
+}
+
+/* 내부 컨텐츠 중앙 정렬 */
+.footer-content {
+  text-align: center;
+  color: #666; /* 전체 텍스트 톤 다운 */
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+/* 사이트 이름 강조 */
+.footer-title {
+  font-weight: 600;
+  color: #333;
+  font-size: 1rem;
+}
+
+/* 카피라이트 */
+.footer-copy {
+  font-weight: 400;
+  color: #999;
+  font-size: 0.85rem;
 }
