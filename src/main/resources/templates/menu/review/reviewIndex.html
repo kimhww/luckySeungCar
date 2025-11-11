@@ -9,13 +9,15 @@
     <script th:inline="javascript" type="text/javascript" th:src="|@{/lib/js/menu/review/review.js}|"></script>
 </head>
 <body>
-<div layout:fragment="Content" class="container">
-    <div class="emoji">⭐🔧</div>
-    <h2>럭키승카 정비소</h2>
-    <input type="number" id="userScore" min="0" max="10" placeholder="0~10">
-    <br>
-    <button onclick="saveScore()">저장</button>
-    <div id="display"></div>
-</div>
+    <div layout:fragment="Content" class="container">
+        <div class="content-box">
+            <div class="emoji">⭐🔧</div>
+            <h2>럭키승카 정비소</h2>
+            <input type="number" id="userScore" min="0" max="10" placeholder="0~10">
+            <br>
+            <button onclick="saveScore()">저장</button>
+            <div id="display"></div>
+        </div>
+    </div>
 </body>
 </html>

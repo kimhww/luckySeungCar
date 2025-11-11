@@ -10,15 +10,16 @@
     <script src="../js/menu.js"></script>
 </head>
 <body>
-<div layout:fragment="Content" class="container">
-    <div class="emoji">
-        <span class="star">⭐</span>
-        <span class="wrench">🔧</span>
+    <div layout:fragment="Content" class="container">
+        <div class="content-box">
+            <div class="emoji">
+                <span class="star"><img th:src="@{/lib/img/star.svg}" class="starImg" alt="별"></span>
+                <span class="wrench"><img th:src="@{/lib/img/wrench.svg}" class="wrenchImg" alt="렌치"></span>
+            </div>
+            <h2>럭키승카 정비소</h2>
+            <button onclick="goReserve();">예약하기</button>
+            <button onclick="goReview();">리뷰 작성하기</button>
+        </div>
     </div>
-    <h2>럭키승카 정비소</h2>
-    <button onclick="goReserve();">예약하기</button>
-    <button onclick="goReview();">리뷰 작성하기</button>
-    <div id="display"></div>
-</div>
 </body>
 </html>
