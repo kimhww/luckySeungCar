@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/menu")
-public class menuMainController {
+public class MenuMainController {
     @GetMapping
     public String init() {
         return "/menu/menuIndex";

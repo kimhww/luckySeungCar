@@ -1,0 +1,14 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.luckyRepair.seungme.luckySeungCar.main.user.UserDao">
+
+    <insert id="insertUser" parameterType="com.luckyRepair.seungme.luckySeungCar.main.user.UserDomain">
+        INSERT INTO users(
+        user_idnt, user_pswd, user_name, elec_mail, tele_hand, work_date, updt_date, work_idnt, work_ipas
+        ) VALUES (
+        #{userIdnt}, #{userPswd}, #{userName}, #{elecMail}, #{teleHand}, #{workDate}, #{updtDate}, #{workIdnt}, #{workIpas}
+        )
+    </insert>
+
+</mapper>

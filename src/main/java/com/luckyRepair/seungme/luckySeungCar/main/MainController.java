@@ -6,12 +6,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Slf4j
 @Controller
-public class MainController {
+public class  MainController {
 
     @GetMapping("/")
     public String main() {
         log.info("메인 페이지 호출됨");
-        return "main/index";  // ✅ templates/main/index.html
+        return "main/index";
     }
 
     @GetMapping("/main/index")

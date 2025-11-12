@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Slf4j
 @Controller
 @RequestMapping("/menu/review")
-public class reviewController {
+public class ReviewController {
     @GetMapping
     public String main() {
         return "menu/review/reviewIndex";

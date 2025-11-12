@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Slf4j
 @Controller
 @RequestMapping("/menu/reserve")
-public class reserveController {
+public class ReserveController {
     @GetMapping
     public String main() {
         return "menu/reserve/reserveIndex";
