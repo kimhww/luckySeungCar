@@ -8,5 +8,11 @@ import java.sql.Timestamp;
 @Mapper
 @Repository
 public interface UserDao {
-    void insertUser(UserDomain userDomain);
+    void insertUserBase(UserDomain userDomain);
+
+    void insertUserInfo(UserDomain userDomain);
+
+    public UserDomain findUserByUserInfo(UserDomain domain);
+    public UserDomain findUserByUserInfo2(UserDomain domain);
+    UserDomain findUserById(String userIdnt);
 }

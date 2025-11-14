@@ -15,3 +15,11 @@ function checkCapsLock(event)  {
 		document.getElementById("message").innerText = ""
 	}
 }
+
+function checkEnter(){
+	if(event.keyCode == 13) goLogin();
+}
+
+function goLogin(){
+	$('#loginForm').valid();
+}

@@ -1,5 +1,6 @@
 package com.luckyRepair.seungme.luckySeungCar.main.user;
 
+import com.luckyRepair.seungme.luckySeungCar.main.login.domain.LoginDomain;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,21 +28,36 @@ public class UserController {
 
     }
 
+    //@PostMapping("/join")
+    //public String joinUser(@ModelAttribute UserDomain userDomain, HttpServletRequest request, Model model) {
+    //    String clientIp = request.getRemoteAddr();
+//
+   //      userDomain.setWorkIdnt(userDomain.getUserIdnt());
+   //     userDomain.setWorkDate(new Date());
+    //    userDomain.setUpdtDate(new Date());
+    //    userDomain.setWorkIpas(clientIp);
+//
+   //      System.out.println("domain: " + userDomain);
+
+     //   userService.insertUserBase(userDomain);
+      //  userService.insertUserInfo(userDomain);
+
+      //  model.addAttribute("message", "회원가입이 완료되었습니다!");
+     //   //return "redirect:/user/joinComplete"; // 가입 완료 페이지
+     //   return "/main/login/loginForm";
+    //}
+
     @PostMapping("/join")
-    public String joinUser(@ModelAttribute UserDomain userDomain, HttpServletRequest request, Model model) {
-        String clientIp = request.getRemoteAddr();
+    public String join(@ModelAttribute UserDomain domain, Model model, HttpServletRequest request) {
+        domain.setWorkDate(new Date());
+        domain.setWorkIpas(request.getRemoteAddr());
 
-        userDomain.setWorkIdnt(userDomain.getUserIdnt());
-        userDomain.setWorkDate(new Date());
-        userDomain.setUpdtDate(new Date());
-        userDomain.setWorkIpas(clientIp);
+        System.out.println(">>>>domainJoin: " + domain);
+        userService.insert(domain);
 
-        System.out.println("domain: " + userDomain);
-
-        userService.insertUser(userDomain);
-
-        model.addAttribute("message", "회원가입이 완료되었습니다!");
-        //return "redirect:/user/joinComplete"; // 가입 완료 페이지
+        LoginDomain loginDomain = LoginDomain.builder().userIdnt(domain.getUserIdnt()).build();
+        model.addAttribute("isJoin", true);
+        model.addAttribute("user", loginDomain);
         return "/main/login/loginForm";
     }
 }

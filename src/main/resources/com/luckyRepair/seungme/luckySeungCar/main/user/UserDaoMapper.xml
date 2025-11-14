@@ -3,11 +3,19 @@
 
 <mapper namespace="com.luckyRepair.seungme.luckySeungCar.main.user.UserDao">
 
-    <insert id="insertUser" parameterType="com.luckyRepair.seungme.luckySeungCar.main.user.UserDomain">
-        INSERT INTO users(
-        user_idnt, user_pswd, user_name, elec_mail, tele_hand, work_date, updt_date, work_idnt, work_ipas
+    <insert id="insertUserBase" parameterType="com.luckyRepair.seungme.luckySeungCar.main.user.UserDomain">
+        INSERT INTO user_base(
+        user_idnt, grup_code, user_pswd, pswd_date, rgst_date, used_yorn, updt_date, work_date, work_idnt, work_ipas
         ) VALUES (
-        #{userIdnt}, #{userPswd}, #{userName}, #{elecMail}, #{teleHand}, #{workDate}, #{updtDate}, #{workIdnt}, #{workIpas}
+        #{userIdnt}, '3', #{userPswd}, #{workDate}, #{workDate}, 'Y', #{updtDate}, #{workDate}, #{userIdnt}, #{workIpas}
+        )
+    </insert>
+
+    <insert id="insertUserInfo" parameterType="com.luckyRepair.seungme.luckySeungCar.main.user.UserDomain">
+        INSERT INTO user_info(
+        user_idnt, user_name, elec_mail, tele_hand, updt_date, work_date, work_idnt, work_ipas
+        ) VALUES (
+        #{userIdnt}, #{userName}, #{elecMail}, #{teleHand}, #{updtDate}, #{workDate}, #{userIdnt}, #{workIpas}
         )
     </insert>
 

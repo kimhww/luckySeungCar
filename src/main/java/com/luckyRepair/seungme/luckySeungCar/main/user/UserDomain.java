@@ -12,7 +12,13 @@ import java.util.Date;
 @Builder
 public class UserDomain {
     private String userIdnt;
+    private String grupCode;
     private String userPswd;
+    private Date pswdDate;
+    private Date rgstDate;
+    private String usedYorn;
+    private Date lognDate;
+    private String lognIpas;
     private String userName;
     private String elecMail;
     private String teleHand;
