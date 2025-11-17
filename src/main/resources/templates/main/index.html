@@ -14,9 +14,20 @@
                 <span class="star"><img th:src="@{/lib/img/star.svg}" class="starImg" alt="별"></span>
                 <span class="wrench"><img th:src="@{/lib/img/wrench.svg}" class="wrenchImg" alt="렌치"></span>
             </div>
+
             <h2>럭키승카 정비소</h2>
+
+            <th:block th:if="${session.LOGIN_USER != null}">
+                <div>[[${session.LOGIN_USER.userName}]]</div>
+            </th:block>
+
+            <th:block th:if="${session.LOGIN_USER != null}">
             <button th:onclick="startLuckyRepair();">입장하기</button>
-            <button th:onclick="goLoginForm();">로그인</button>
+            </th:block>
+
+            <th:block th:if="${session.LOGIN_USER == null}">
+                <button th:onclick="goLoginForm();">로그인</button>
+            </th:block>
         </div>
     </div>
 </body>

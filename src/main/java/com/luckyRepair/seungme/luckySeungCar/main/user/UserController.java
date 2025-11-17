@@ -28,25 +28,6 @@ public class UserController {
 
     }
 
-    //@PostMapping("/join")
-    //public String joinUser(@ModelAttribute UserDomain userDomain, HttpServletRequest request, Model model) {
-    //    String clientIp = request.getRemoteAddr();
-//
-   //      userDomain.setWorkIdnt(userDomain.getUserIdnt());
-   //     userDomain.setWorkDate(new Date());
-    //    userDomain.setUpdtDate(new Date());
-    //    userDomain.setWorkIpas(clientIp);
-//
-   //      System.out.println("domain: " + userDomain);
-
-     //   userService.insertUserBase(userDomain);
-      //  userService.insertUserInfo(userDomain);
-
-      //  model.addAttribute("message", "회원가입이 완료되었습니다!");
-     //   //return "redirect:/user/joinComplete"; // 가입 완료 페이지
-     //   return "/main/login/loginForm";
-    //}
-
     @PostMapping("/join")
     public String join(@ModelAttribute UserDomain domain, Model model, HttpServletRequest request) {
         domain.setWorkDate(new Date());

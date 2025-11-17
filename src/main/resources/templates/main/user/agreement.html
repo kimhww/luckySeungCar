@@ -9,45 +9,45 @@
     <script th:inline="javascript" type="text/javascript" th:src="|@{/lib/js/main/user.js}|"></script>
 </head>
 <body>
-<div layout:fragment="Content" class="container">
-    <div class="content-box">
-        <h2>회원가입 약관 동의</h2>
+    <div layout:fragment="Content" class="container">
+        <div class="content-box">
+            <h2>회원가입 약관 동의</h2>
 
-        <div class="terms-container">
-            <!-- 개인정보 수집 및 이용 동의 -->
-            <div class="term-item">
-                <div class="term-title">[필수] 개인정보 수집 및 이용 동의</div>
-                <div class="term-content">
-                    본인은 럭키승카가 제공하는 서비스 이용과 관련하여 아래와 같이 개인정보를 수집 및 이용하는 것에 동의합니다.<br>
-                    수집 항목: 이름, 이메일, 연락처, 생년월일 등<br>
-                    이용 목적: 회원관리, 서비스 제공, 고객 상담, 맞춤 서비스 제공<br>
-                    보유 및 이용 기간: 회원 탈퇴 시까지, 단 관계법령에 따라 보존 필요 시 일정 기간 보관
+            <div class="terms-container">
+                <!-- 개인정보 수집 및 이용 동의 -->
+                <div class="term-item">
+                    <div class="term-title">[필수] 개인정보 수집 및 이용 동의</div>
+                    <div class="term-content">
+                        본인은 럭키승카가 제공하는 서비스 이용과 관련하여 아래와 같이 개인정보를 수집 및 이용하는 것에 동의합니다.<br>
+                        수집 항목: 이름, 이메일, 연락처, 생년월일 등<br>
+                        이용 목적: 회원관리, 서비스 제공, 고객 상담, 맞춤 서비스 제공<br>
+                        보유 및 이용 기간: 회원 탈퇴 시까지, 단 관계법령에 따라 보존 필요 시 일정 기간 보관
+                    </div>
+                    <div class="term-actions">
+                        <label><input type="radio" name="term1" value="agree"> 동의함</label>
+                        <label><input type="radio" name="term1" value="disagree"> 동의하지 않음</label>
+                    </div>
                 </div>
-                <div class="term-actions">
-                    <label><input type="radio" name="term1" value="agree"> 동의함</label>
-                    <label><input type="radio" name="term1" value="disagree"> 동의하지 않음</label>
+
+                <!-- 개인정보 제공 및 조회 동의 -->
+                <div class="term-item">
+                    <div class="term-title">[필수] 개인정보 제공 및 조회 동의</div>
+                    <div class="term-content">
+                        본인은 서비스 제공을 위해 제3자에게 개인정보가 제공되는 것에 동의합니다.<br>
+                        제공 대상: 럭키승카, 티체, 협력사 등<br>
+                        제공 항목: 이름, 연락처, 서비스 이용 정보<br>
+                        제공 목적: 서비스 연계, 고객 지원<br>
+                        제공 및 조회 기간: 서비스 제공 목적 달성 시까지
+                    </div>
+                    <div class="term-actions">
+                        <label><input type="radio" name="term2" value="agree"> 동의함</label>
+                        <label><input type="radio" name="term2" value="disagree"> 동의하지 않음</label>
+                    </div>
                 </div>
             </div>
 
-            <!-- 개인정보 제공 및 조회 동의 -->
-            <div class="term-item">
-                <div class="term-title">[필수] 개인정보 제공 및 조회 동의</div>
-                <div class="term-content">
-                    본인은 서비스 제공을 위해 제3자에게 개인정보가 제공되는 것에 동의합니다.<br>
-                    제공 대상: 럭키승카, 티체, 협력사 등<br>
-                    제공 항목: 이름, 연락처, 서비스 이용 정보<br>
-                    제공 목적: 서비스 연계, 고객 지원<br>
-                    제공 및 조회 기간: 서비스 제공 목적 달성 시까지
-                </div>
-                <div class="term-actions">
-                    <label><input type="radio" name="term2" value="agree"> 동의함</label>
-                    <label><input type="radio" name="term2" value="disagree"> 동의하지 않음</label>
-                </div>
-            </div>
+            <button id="joinBtn" th:onclick="goJoinForm(event);">회원가입</button>
         </div>
-
-        <button id="joinBtn" th:onclick="goJoinForm(event);">회원가입</button>
     </div>
-</div>
 </body>
 </html>

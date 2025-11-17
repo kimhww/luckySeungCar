@@ -9,83 +9,84 @@
     <script th:inline="javascript" type="text/javascript" th:src="|@{/lib/js/main/user.js}|"></script>
 </head>
 <body>
-<div layout:fragment="Content" class="container">
-    <form id="join-frm" name="joinForm" th:action="@{/user/join}" method="post" onsubmit="return false;">
-    <div class="content-box">
-        <div class="emoji">
-            <span class="star"><img th:src="@{/lib/img/star.svg}" class="starImg" alt="별"></span>
-            <span class="wrench"><img th:src="@{/lib/img/wrench.svg}" class="wrenchImg" alt="렌치"></span>
-        </div>
-        <h2>회원가입</h2>
+    <div layout:fragment="Content" class="container">
+        <form id="join-frm" name="joinForm" th:action="@{/user/join}" method="post" onsubmit="return false;">
+            <div class="content-box">
+                <div class="emoji">
+                    <span class="star"><img th:src="@{/lib/img/star.svg}" class="starImg" alt="별"></span>
+                    <span class="wrench"><img th:src="@{/lib/img/wrench.svg}" class="wrenchImg" alt="렌치"></span>
+                </div>
 
-        <!-- 아이디 -->
-        <div class="loginGroup" style="margin-top:40px">
-            <label for="user_idnt">아이디</label>
-            <input type="text" id="user_idnt" name="userIdnt" placeholder="아이디 입력">
-        </div>
+                <h2>회원가입</h2>
 
-        <!-- 비밀번호 -->
-        <div class="loginGroup">
-            <label for="pass_word">비밀번호</label>
-            <input type="password" id="pass_word" name="userPswd" placeholder="비밀번호 입력">
-            <div><label id="messageForPassWord" class="error"></label></div>
-        </div>
+                <!-- 아이디 -->
+                <div class="loginGroup" style="margin-top:40px">
+                    <label for="user_idnt">아이디</label>
+                    <input type="text" id="user_idnt" name="userIdnt" placeholder="아이디 입력">
+                </div>
 
-        <!-- 비밀번호 재입력 -->
-        <div class="loginGroup">
-            <label for="pass_word_chck">비밀번호 재입력</label>
-            <input type="password" id="pass_word_chck" name="pass_word_chck" placeholder="비밀번호 재입력">
-            <div><label id="messageForPassWordChck" class="error"></label></div>
-        </div>
+                <!-- 비밀번호 -->
+                <div class="loginGroup">
+                    <label for="pass_word">비밀번호</label>
+                    <input type="password" id="pass_word" name="userPswd" placeholder="비밀번호 입력">
+                    <div><label id="messageForPassWord" class="error"></label></div>
+                </div>
 
-        <!-- 성명 -->
-        <div class="loginGroup">
-            <label for="user_name">성명</label>
-            <input type="text" id="user_name" name="userName" placeholder="이름 입력">
-        </div>
+                <!-- 비밀번호 재입력 -->
+                <div class="loginGroup">
+                    <label for="pass_word_chck">비밀번호 재입력</label>
+                    <input type="password" id="pass_word_chck" name="pass_word_chck" placeholder="비밀번호 재입력">
+                    <div><label id="messageForPassWordChck" class="error"></label></div>
+                </div>
 
-        <!-- 전화번호 -->
-        <div class="loginGroup">
-            <label for="phone1">전화번호</label>
-            <div class="phone-inputs">
-                <select id="phone1" name="phone1">
-                    <option value="010" selected>010</option>
-                    <option value="011">011</option>
-                    <option value="016">016</option>
-                    <option value="017">017</option>
-                    <option value="018">018</option>
-                    <option value="019">019</option>
-                    <option value="custom">직접입력</option>
-                </select>
-                <input type="text" id="phone1Custom" maxlength="3" placeholder="직접입력" class="hidden">
-                <span>-</span>
-                <input type="text" id="phone2" name="phone2" maxlength="4" placeholder="1234">
-                <span>-</span>
-                <input type="text" id="phone3" name="phone3" maxlength="4" placeholder="5678">
+                <!-- 성명 -->
+                <div class="loginGroup">
+                    <label for="user_name">성명</label>
+                    <input type="text" id="user_name" name="userName" placeholder="이름 입력">
+                </div>
+
+                <!-- 전화번호 -->
+                <div class="loginGroup">
+                    <label for="phone1">전화번호</label>
+                    <div class="phone-inputs">
+                        <select id="phone1" name="phone1">
+                            <option value="010" selected>010</option>
+                            <option value="011">011</option>
+                            <option value="016">016</option>
+                            <option value="017">017</option>
+                            <option value="018">018</option>
+                            <option value="019">019</option>
+                            <option value="custom">직접입력</option>
+                        </select>
+                        <input type="text" id="phone1Custom" maxlength="3" placeholder="직접입력" class="hidden">
+                        <span>-</span>
+                        <input type="text" id="phone2" name="phone2" maxlength="4" placeholder="1234">
+                        <span>-</span>
+                        <input type="text" id="phone3" name="phone3" maxlength="4" placeholder="5678">
+                    </div>
+                    <div><label id="messageForPhone" class="error"></label></div>
+                </div>
+
+                <!-- 이메일 -->
+                <div class="loginGroup">
+                    <label for="email1">이메일 주소</label>
+                    <div class="email-inputs">
+                        <input type="text" id="email1" name="email1" placeholder="아이디 입력">
+                        <span>@</span>
+                        <select id="emailDomainSelect" name="email2">
+                            <option value="naver.com" selected>naver.com</option>
+                            <option value="gmail.com">gmail.com</option>
+                            <option value="daum.net">daum.net</option>
+                            <option value="custom">직접입력</option>
+                        </select>
+                        <input type="text" id="email2Custom" placeholder="직접입력" class="hidden">
+                    </div>
+                    <div><label id="messageForEmail" class="error"></label></div>
+                </div>
+
+                <button th:onclick="goJoinProc();">회원가입</button>
             </div>
-            <div><label id="messageForPhone" class="error"></label></div>
-        </div>
-
-        <!-- 이메일 -->
-        <div class="loginGroup">
-            <label for="email1">이메일 주소</label>
-            <div class="email-inputs">
-                <input type="text" id="email1" name="email1" placeholder="아이디 입력">
-                <span>@</span>
-                <select id="emailDomainSelect" name="email2">
-                    <option value="naver.com" selected>naver.com</option>
-                    <option value="gmail.com">gmail.com</option>
-                    <option value="daum.net">daum.net</option>
-                    <option value="custom">직접입력</option>
-                </select>
-                <input type="text" id="email2Custom" placeholder="직접입력" class="hidden">
-            </div>
-            <div><label id="messageForEmail" class="error"></label></div>
-        </div>
-
-        <button th:onclick="goJoinProc();">회원가입</button>
+        </form>
     </div>
-    </form>
-</div>
 </body>
 </html>

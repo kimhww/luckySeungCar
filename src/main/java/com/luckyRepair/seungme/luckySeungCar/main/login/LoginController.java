@@ -35,7 +35,6 @@ public class LoginController {
 
     @PostMapping("/login")
     public String login(@RequestBody LoginDomain domain, Model model, HttpServletRequest request) {
-
         String redirectUrl = "/";
         try {
             domain.setLognIpas(request.getRemoteAddr());
@@ -44,9 +43,8 @@ public class LoginController {
             request.getSession().setAttribute(LuckySeungCarConstant.LOGIN_USER, loginUser);
 
             String storedUrl = (String)request.getSession().getAttribute(LuckySeungCarConstant.REQUEST_URL);
-                request.getSession().setAttribute(LuckySeungCarConstant.REQUEST_URL, null);
-                if(storedUrl != null && !storedUrl.isEmpty()) return "redirect:"+storedUrl;
-
+            request.getSession().setAttribute(LuckySeungCarConstant.REQUEST_URL, null);
+            if(storedUrl != null && !storedUrl.isEmpty()) return "redirect:"+storedUrl;
 
         } catch(LoginFailException e) {
             log.error("{}", e.getMessage());

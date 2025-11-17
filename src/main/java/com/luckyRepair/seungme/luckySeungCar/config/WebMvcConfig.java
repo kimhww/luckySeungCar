@@ -50,10 +50,10 @@ public class WebMvcConfig implements WebMvcConfigurer {
         converters.add(converter);
 
         converters.stream()
-                .forEach(x -> {
-                    log.debug("converter : {}, mediaType: {} ", x, x.getSupportedMediaTypes());
-                    if(x instanceof MappingJackson2HttpMessageConverter)
-                        ((MappingJackson2HttpMessageConverter) x).setObjectMapper(mapper);
-                });
+            .forEach(x -> {
+                log.debug("converter : {}, mediaType: {} ", x, x.getSupportedMediaTypes());
+                if(x instanceof MappingJackson2HttpMessageConverter)
+                    ((MappingJackson2HttpMessageConverter) x).setObjectMapper(mapper);
+            });
     }
 }

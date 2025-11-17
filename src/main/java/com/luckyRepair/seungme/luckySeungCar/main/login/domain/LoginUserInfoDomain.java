@@ -13,7 +13,6 @@ import java.util.Date;
 public class LoginUserInfoDomain {
     private String userIdnt;
     private String userName;
-
     private Date loginDate;
     private String loginIp;
     private String groupCode;

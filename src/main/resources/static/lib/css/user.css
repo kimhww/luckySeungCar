@@ -1,72 +1,69 @@
+.terms-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 30px;
+    text-align: left;
+}
 
-        .terms-container {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-            margin-top: 30px;
-            text-align: left;
-        }
+.term-item {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 15px 20px;
+    background: #fdfdfd;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
 
-        .term-item {
-            border: 1px solid #ddd;
-            border-radius: 10px;
-            padding: 15px 20px;
-            background: #fdfdfd;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-        }
+.term-title {
+    font-weight: 600;
+    font-size: 1rem;
+    margin-bottom: 10px;
+    color: #0071BE;
+}
 
-        .term-title {
-            font-weight: 600;
-            font-size: 1rem;
-            margin-bottom: 10px;
-            color: #0071BE;
-        }
+.term-content {
+    font-size: 0.9rem;
+    color: #555;
+    margin-bottom: 10px;
+    max-height: 120px;
+    overflow-y: auto;
+}
 
-        .term-content {
-            font-size: 0.9rem;
-            color: #555;
-            margin-bottom: 10px;
-            max-height: 120px;
-            overflow-y: auto;
-        }
+.term-actions {
+    display: flex;
+    gap: 15px;
+}
 
-        .term-actions {
-            display: flex;
-            gap: 15px;
-        }
+.term-actions label {
+    cursor: pointer;
+    font-size: 0.9rem;
+    color: #333;
+}
 
-        .term-actions label {
-            cursor: pointer;
-            font-size: 0.9rem;
-            color: #333;
-        }
+.term-actions input[type="radio"] {
+    accent-color: #0071BE;
+    width: 50px;
+    outline: none;
+    box-shadow: none;
+}
 
-        .term-actions input[type="radio"] {
-            accent-color: #0071BE;
-            width: 50px;
-            outline: none;
-                box-shadow: none;
-        }
+button#joinBtn {
+    margin-top: 25px;
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border-radius: 6px;
+    border: none;
+    background-color: #0071BE;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
 
-        button#joinBtn {
-            margin-top: 25px;
-            width: 100%;
-            padding: 10px;
-            font-size: 1rem;
-            border-radius: 6px;
-            border: none;
-            background-color: #0071BE;
-            color: white;
-            cursor: pointer;
-            transition: background-color 0.2s ease;
-        }
-
-        button#joinBtn:disabled {
-            background-color: #ccc;
-            cursor: not-allowed;
-        }
-
-
+button#joinBtn:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
 
 .loginGroup {
     display: flex;
@@ -132,8 +129,8 @@ button:hover {
     align-items: center;
     gap: 6px;
     justify-content: flex-start;
-        width: 100%;
-        box-sizing: border-box;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .phone-inputs select,
@@ -148,7 +145,7 @@ button:hover {
     padding: 0 8px;
     font-size: 14px;
     transition: border-color 0.2s ease;
-     box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 .phone-inputs span,

@@ -12,7 +12,6 @@ import java.util.Date;
 @ToString
 public class LoginDomain {
     private String userIdnt;
-    private String passWord;
     private String userPswd;
     private String grupCode;
     private Date lognDate;

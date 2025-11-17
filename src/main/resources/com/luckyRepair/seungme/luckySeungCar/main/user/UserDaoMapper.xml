@@ -1,22 +1,26 @@
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.luckyRepair.seungme.luckySeungCar.main.user.UserDao">
+    <mapper namespace="com.luckyRepair.seungme.luckySeungCar.main.user.UserDao">
 
-    <insert id="insertUserBase" parameterType="com.luckyRepair.seungme.luckySeungCar.main.user.UserDomain">
-        INSERT INTO user_base(
-        user_idnt, grup_code, user_pswd, pswd_date, rgst_date, used_yorn, updt_date, work_date, work_idnt, work_ipas
-        ) VALUES (
-        #{userIdnt}, '3', #{userPswd}, #{workDate}, #{workDate}, 'Y', #{updtDate}, #{workDate}, #{userIdnt}, #{workIpas}
-        )
-    </insert>
+        <insert id="insertUserBase" parameterType="com.luckyRepair.seungme.luckySeungCar.main.user.UserDomain">
+            INSERT INTO user_base(user_idnt, grup_code, user_pswd, pswd_date, rgst_date, used_yorn, updt_date, work_date, work_idnt, work_ipas)
+                VALUES (#{userIdnt}, '3', #{userPswd}, #{workDate}, #{workDate}, 'Y', #{updtDate}, #{workDate}, #{userIdnt}, #{workIpas})
+        </insert>
 
-    <insert id="insertUserInfo" parameterType="com.luckyRepair.seungme.luckySeungCar.main.user.UserDomain">
-        INSERT INTO user_info(
-        user_idnt, user_name, elec_mail, tele_hand, updt_date, work_date, work_idnt, work_ipas
-        ) VALUES (
-        #{userIdnt}, #{userName}, #{elecMail}, #{teleHand}, #{updtDate}, #{workDate}, #{userIdnt}, #{workIpas}
-        )
-    </insert>
+        <insert id="insertUserInfo" parameterType="com.luckyRepair.seungme.luckySeungCar.main.user.UserDomain">
+            INSERT INTO user_info(user_idnt, user_name, elec_mail, tele_hand, updt_date, work_date, work_idnt, work_ipas)
+                VALUES (#{userIdnt}, #{userName}, #{elecMail}, #{teleHand}, #{updtDate}, #{workDate}, #{userIdnt}, #{workIpas})
+        </insert>
 
-</mapper>
+        <select id="findUserById" parameterType="string" resultType="com.luckyRepair.seungme.luckySeungCar.main.user.UserDomain">
+            select a.user_idnt,
+                   b.user_name,
+                   b.elec_mail,
+                   b.tele_hand,
+                   a.rgst_date
+                from user_base a, user_info b
+                where a.user_idnt = b.user_idnt
+                    and a.user_idnt = #{userIdnt}
+        </select>
+
+    </mapper>

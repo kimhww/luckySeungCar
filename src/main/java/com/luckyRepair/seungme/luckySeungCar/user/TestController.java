@@ -17,9 +17,9 @@ public class TestController {
     @GetMapping("/test-db")
     public String testConnection() throws SQLException {
         try (Connection conn = dataSource.getConnection()) {
-            return "✅ DB 연결 성공: " + conn.getMetaData().getURL();
+            return "DB 연결 성공: " + conn.getMetaData().getURL();
         } catch (Exception e) {
-            return "❌ DB 연결 실패: " + e.getMessage();
+            return "DB 연결 실패: " + e.getMessage();
         }
     }
 }

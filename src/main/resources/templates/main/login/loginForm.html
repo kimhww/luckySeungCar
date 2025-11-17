@@ -9,32 +9,31 @@
     <script th:inline="javascript" type="text/javascript" th:src="|@{/lib/js/main/login.js}|"></script>
 </head>
 <body>
-<div layout:fragment="Content" class="container">
-    <form id="login-frm" name="loginForm" th:action="@{/login/login}" method="post">
-        <div class="content-box">
-            <div class="emoji">
-                <span class="star"><img th:src="@{/lib/img/star.svg}" class="starImg" alt="별"></span>
-                <span class="wrench"><img th:src="@{/lib/img/wrench.svg}" class="wrenchImg" alt="렌치"></span>
-            </div>
-            <h2>로그인</h2>
-            <div class="loginGroup" style="margin-top:40px">
-                <label for="user_idnt">아이디</label>
-                <input type="text" id="user_idnt" name="user_idnt">
-            </div>
+    <div layout:fragment="Content" class="container">
+        <form id="login-frm" name="loginForm" th:action="@{/login/login}" method="post">
+            <div class="content-box">
+                <div class="emoji">
+                    <span class="star"><img th:src="@{/lib/img/star.svg}" class="starImg" alt="별"></span>
+                    <span class="wrench"><img th:src="@{/lib/img/wrench.svg}" class="wrenchImg" alt="렌치"></span>
+                </div>
+                <h2>로그인</h2>
+                <div class="loginGroup" style="margin-top:40px">
+                    <label for="user_idnt">아이디</label>
+                    <input type="text" id="user_idnt" name="user_idnt">
+                </div>
 
-            <div class="loginGroup">
-                <label for="pass_word">비밀번호</label>
-                <input type="password" id="pass_word" name="user_pswd" onkeyup="checkEnter();checkCapsLock(event)">
-                <div><label id="message" class="error"></label></div>
-            </div>
+                <div class="loginGroup">
+                    <label for="user_pswd">비밀번호</label>
+                    <input type="password" id="user_pswd" name="user_pswd" onkeyup="checkEnter();checkCapsLock(event)">
+                    <div><label id="message" class="error"></label></div>
+                </div>
 
-            <!--<button th:onclick="goLogin();">로그인</button>-->
-            <button type="submit" class="loginBtn" onclick="goLogin();">로그인</button>
-            <div class="loginInfoGroup">
-                <p><span th:onclick="goJoin()">회원가입</span> | <span onclick="goFindId();">아이디/비밀번호 찾기</span></p>
+                <button type="submit" class="loginBtn" onclick="goLogin();">로그인</button>
+                <div class="loginInfoGroup">
+                    <p><span th:onclick="goJoin()">회원가입</span> | <span onclick="goFindId();">아이디/비밀번호 찾기</span></p>
+                </div>
             </div>
-        </div>
-    </form>
-</div>
+        </form>
+    </div>
 </body>
 </html>

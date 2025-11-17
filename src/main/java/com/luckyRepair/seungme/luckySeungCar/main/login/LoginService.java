@@ -25,28 +25,25 @@ public class LoginService {
 
     @Transactional
     public LoginUserInfoDomain loginProcess(LoginDomain domain) throws LoginFailException{
-        System.out.println("loginProcess 입장");
-        System.out.println("loginProcess 도메인 : " + domain);
         LoginDomain dbData =  loginDao.findUserById(domain.getUserIdnt());
-        System.out.println("loginProcess dbData : " + dbData);
         log.debug("db User : {} " , dbData);
 
         if(dbData == null) throw new LoginFailException("no exists User");
-        if(!passwordEncoder.matches(domain.getPassWord(), dbData.getPassWord()))
+        if(!passwordEncoder.matches(domain.getUserPswd(), dbData.getUserPswd()))
             throw new LoginFailException("not match password.");
 
         UserDomain user = userDao.findUserById(domain.getUserIdnt());
         loginDao.updateLoginInfo(domain);
 
         LoginUserInfoDomain loginUserInfo = LoginUserInfoDomain.builder()
-                .userIdnt(domain.getUserIdnt())
-                .userName(user.getUserName())
-                .groupCode(dbData.getGrupCode())
-                .loginDate(domain.getLognDate())
-                .loginIp(domain.getLognIpas())
-                .prevLoginDate(dbData.getLognDate())
-                .prevLoginIp(dbData.getLognIpas())
-                .build();
+            .userIdnt(domain.getUserIdnt())
+            .userName(user.getUserName())
+            .groupCode(dbData.getGrupCode())
+            .loginDate(domain.getLognDate())
+            .loginIp(domain.getLognIpas())
+            .prevLoginDate(dbData.getLognDate())
+            .prevLoginIp(dbData.getLognIpas())
+            .build();
 
         log.info("login success : {}", loginUserInfo);
         return loginUserInfo;

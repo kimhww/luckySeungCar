@@ -11,15 +11,15 @@ function goFindId(){
 function checkCapsLock(event)  {
     if (event.getModifierState("CapsLock")) {
         document.getElementById("message").innerText = "Caps Lock이 켜져 있습니다."
-	} else {
-		document.getElementById("message").innerText = ""
-	}
+    } else {
+        document.getElementById("message").innerText = ""
+    }
 }
 
 function checkEnter(){
-	if(event.keyCode == 13) goLogin();
+    if(event.keyCode == 13) goLogin();
 }
 
 function goLogin(){
-	$('#loginForm').valid();
+    $('#loginForm').valid();
 }
