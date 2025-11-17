@@ -22,11 +22,14 @@
             </th:block>
 
             <th:block th:if="${session.LOGIN_USER != null}">
-            <button th:onclick="startLuckyRepair();">입장하기</button>
+                <button th:onclick="startLuckyRepair();">입장하기</button>
             </th:block>
 
             <th:block th:if="${session.LOGIN_USER == null}">
                 <button th:onclick="goLoginForm();">로그인</button>
+            </th:block>
+            <th:block th:if="${session.LOGIN_USER != null}">
+                <button th:onclick="goLogout();">로그아웃</button>
             </th:block>
         </div>
     </div>

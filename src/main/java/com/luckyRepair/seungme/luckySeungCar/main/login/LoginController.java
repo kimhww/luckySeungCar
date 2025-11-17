@@ -55,4 +55,12 @@ public class LoginController {
 
         return "redirect:" + redirectUrl;
     }
+
+    @GetMapping("/logout")
+    public String logout(HttpServletRequest request) {
+        LoginUserInfoDomain userInfo = (LoginUserInfoDomain)request.getSession().getAttribute(LuckySeungCarConstant.LOGIN_USER);
+        log.info("Lgout - userIdnt : " + userInfo.getUserIdnt());
+        request.getSession().setAttribute(LuckySeungCarConstant.LOGIN_USER, null);
+        return "redirect:/";
+    }
 }
