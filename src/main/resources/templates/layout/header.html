@@ -1,19 +1,108 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<div th:fragment="HeaderFragment">
+<div th:fragment="HeaderFragment" class="headerContainer">
     <header class="header">
+
         <div class="header-inner">
-            <a class="logo" th:href="@{/main/index}">
-                <img th:src="@{/lib/img/luckySeungCarLogo.svg}" alt="럭키승카 로고">
-            </a>
+            <div class="header-left">
+                <a class="logo" th:href="@{/main/index}">
+                    <img th:src="@{/lib/img/luckySeungCarLogo.svg}" alt="럭키승카 로고">
+                </a>
+            </div>
+
             <div class="divider"></div>
-            <h1>
-                <a class="title" th:href="@{/main/index}">럭키승카</a>
-            </h1>
+
+            <div class="header-right">
+                <h1>
+                    <a class="title" th:href="@{/main/index}">럭키승카</a>
+                </h1>
+            </div>
         </div>
-        <div>
-            menu | profile
+
+        <div class="menuBar">
+            <div class="menu-left">
+                <img th:src="@{/lib/img/menu.svg}" alt="메뉴" class="menuBarImg">
+            </div>
+
+            <div class="dividerBar">|</div>
+
+            <div class="menu-right">
+                <div class="profileBox">
+                    <img th:src="@{/lib/img/profile.svg}" alt="프로필" class="menuBarImg">
+                    <th:block th:if="${session.LOGIN_USER != null}">
+                        [[${session.LOGIN_USER.userName}]] 님
+                    </th:block>
+                </div>
+            </div>
+        </div>
+
+        <div class="dropdownMenu" id="dropdownMenu">
+            <ul class="mainMenu">
+                <li class="mainItem hasSub">
+                    <div class="mainLabelBox">
+                        <span class="mainLabel">럭키승카</span>
+                        <span class="arrow"></span>
+                    </div>
+
+                    <ul class="subMenu">
+                        <li class="subItem">
+                            <a href="#">예약</a>
+                        </li>
+                        <li class="subItem">
+                            <a href="#">리뷰</a>
+                        </li>
+                        <li class="subItem">
+                            <a href="#">이용안내</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="mainItem">
+                    <a class="mainLabel" href="#">공지사항</a>
+                </li>
+                <li class="mainItem">
+                    <a class="mainLabel" href="#">Q&A</a>
+                </li>
+                <li class="mainItem">
+                    <a class="mainLabel" href="#">NOTICE</a>
+                </li>
+            </ul>
         </div>
     </header>
+
+    <script th:inline="javascript">
+        (function() {
+            const menuIcon = document.querySelector(".menu-left img");
+            const dropdown = document.getElementById("dropdownMenu");
+
+            // 전체 메뉴 열기/닫기
+            if (menuIcon && dropdown) {
+                menuIcon.addEventListener("click", () => {
+                    dropdown.classList.toggle("open");
+                });
+            }
+
+            // 소메뉴를 가진 대메뉴 전체 셀렉트
+            const hasSubMenus = document.querySelectorAll(".mainItem.hasSub");
+
+            hasSubMenus.forEach(item => {
+                const labelBox = item.querySelector(".mainLabelBox");
+                const subMenu = item.querySelector(".subMenu");
+
+                labelBox.addEventListener("click", () => {
+                    const isOpen = item.classList.contains("open");
+
+                    // 자신의 소메뉴 토글
+                    item.classList.toggle("open");
+
+                    if (!isOpen) {
+                        subMenu.style.maxHeight = subMenu.scrollHeight + "px";
+                    } else {
+                        subMenu.style.maxHeight = null;
+                    }
+                });
+            });
+        })();
+    </script>
 </div>
 </html>
