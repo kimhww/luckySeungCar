@@ -1,4 +1,4 @@
-package com.luckyRepair.seungme.luckySeungCar.user.menu.reserve;
+package com.luckyRepair.seungme.luckySeungCar.user.menu.qna;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
@@ -7,10 +7,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Slf4j
 @Controller
-@RequestMapping("/menu/reserve")
-public class ReserveController {
+@RequestMapping("/menu/qna")
+public class qnaController {
     @GetMapping
     public String main() {
-        return "menu/reserve/reserveIndex";
+        return "menu/qna/qnaIndex";
     }
 }

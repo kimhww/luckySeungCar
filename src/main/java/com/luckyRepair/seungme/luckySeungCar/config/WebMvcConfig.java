@@ -2,6 +2,8 @@ package com.luckyRepair.seungme.luckySeungCar.config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.luckyRepair.seungme.luckySeungCar.common.converter.JsonFormHttpMessageConverter;
+import com.luckyRepair.seungme.luckySeungCar.common.interceptor.DefaultInterCeptor;
+import com.luckyRepair.seungme.luckySeungCar.common.interceptor.LoginCheckInterceptor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.format.FormatterRegistry;
@@ -30,6 +32,18 @@ public class WebMvcConfig implements WebMvcConfigurer {
 
     @Override
     public void configureViewResolvers(ViewResolverRegistry registry) {
+    }
+
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        registry.addInterceptor(new DefaultInterCeptor())
+                .addPathPatterns("/**");
+        registry.addInterceptor(new LoginCheckInterceptor())
+                .addPathPatterns(Arrays.asList("/menu/lsc/**"))
+                .excludePathPatterns("/lib/**");
+        //registry.addInterceptor(new AdminCheckInterceptor())
+        //        .addPathPatterns(Arrays.asList("/graduate/manager/**"))
+        //        .excludePathPatterns("/lib/**");
     }
 
     @Override

@@ -1,28 +1,28 @@
 document.addEventListener('DOMContentLoaded', () => {
     const SUB_MAP = {
-        maintenance: [
-            {v:"inspection", t:"정밀 점검(전체)"},
-            {v:"brake", t:"브레이크 점검/교환"},
-            {v:"suspension", t:"현가/서스펜션"}
+        10: [
+            {v:"11", t:"정밀 점검(전체)"},
+            {v:"12", t:"브레이크 점검/교환"},
+            {v:"13", t:"현가/서스펜션"}
         ],
-        tyres: [
-            {v:"tire_change", t:"타이어 교체"},
-            {v:"tire_repair", t:"타이어 펑크 수리"},
-            {v:"wheel_align", t:"휠 얼라인먼트"}
+        20: [
+            {v:"21", t:"타이어 교체"},
+            {v:"22", t:"타이어 펑크 수리"},
+            {v:"23", t:"휠 얼라인먼트"}
         ],
-        oil: [
-            {v:"engine_oil", t:"엔진오일 교환"},
-            {v:"gear_oil", t:"미션오일 교환"},
-            {v:"oil_filter", t:"오일 필터 교환"}
+        30: [
+            {v:"31", t:"엔진오일 교환"},
+            {v:"32", t:"미션오일 교환"},
+            {v:"33", t:"오일 필터 교환"}
         ],
-        battery: [
-            {v:"battery_test", t:"배터리 진단"},
-            {v:"battery_replace", t:"배터리 교체"}
+        40: [
+            {v:"41", t:"배터리 진단"},
+            {v:"42", t:"배터리 교체"}
         ],
-        accessories: [
-            {v:"wipers", t:"와이퍼 교환"},
-            {v:"bulbs", t:"전구/램프 교체"},
-            {v:"air_filter", t:"에어필터 교환"}
+        50: [
+            {v:"51", t:"와이퍼 교환"},
+            {v:"52", t:"전구/램프 교체"},
+            {v:"53", t:"에어필터 교환"}
         ]
     };
 
@@ -72,8 +72,6 @@ document.addEventListener('DOMContentLoaded', () => {
         if(!data.subcategory) missing.push('소분류');
         if(!data.date) missing.push('예약일자');
         if(!data.time) missing.push('예약시간');
-        if(!data.name) missing.push('이름');
-        if(!data.phone) missing.push('연락처');
 
         if (missing.length) {
             alert('다음 항목을 입력해 주세요: ' + missing.join(', '));
@@ -106,9 +104,6 @@ document.addEventListener('DOMContentLoaded', () => {
             subVal: subEl.value || '',
             date: document.getElementById('date').value || '',
             time: document.getElementById('time').value || '',
-            name: document.getElementById('name').value.trim(),
-            phone: document.getElementById('phone').value.trim(),
-            birth: document.getElementById('birth').value || '',
             carModel: document.getElementById('carModel').value.trim(),
             requests: document.getElementById('requests').value.trim(),
             options: selectedChips
@@ -125,9 +120,7 @@ document.addEventListener('DOMContentLoaded', () => {
         };
         addItem('서비스', `${d.category} · ${d.subcategory}`);
         addItem('예약 일시', d.date && d.time ? `${d.date} · ${d.time}` : (d.date || d.time));
-        addItem('이름 / 연락', `${d.name || '-'} / ${d.phone || '-'}`);
         addItem('차종', d.carModel || '-');
-        addItem('생년월일', d.birth || '-');
         addItem('옵션', d.options.length ? d.options.join(', ') : '-');
         addItem('요청사항', d.requests || '-');
     }
@@ -137,8 +130,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const rows = [
             {k:'서비스', v:`${d.category} · ${d.subcategory}`},
             {k:'예약 일시', v:d.date && d.time ? `${d.date} · ${d.time}` : (d.date || d.time || '-')},
-            {k:'이름', v:d.name || '-'},
-            {k:'연락처', v:d.phone || '-'},
             {k:'차종', v:d.carModel || '-'},
             {k:'옵션', v:d.options.length ? d.options.join(', ') : '-'},
             {k:'요청사항', v:d.requests || '-'}
@@ -176,3 +167,44 @@ document.addEventListener('DOMContentLoaded', () => {
         dateEl.min = `${yyyy}-${mm}-${dd}`;
     })();
 });
+
+window.addEventListener("load", () => {
+
+    // 각 옵션별 input 대응
+    const optInputs = [
+        document.querySelector('input[name="rqstOpt1"]'), // 대체 차량 요청
+        document.querySelector('input[name="rqstOpt2"]'), // 빠른 점검
+        document.querySelector('input[name="rqstOpt3"]'), // 세차 포함
+        document.querySelector('input[name="rqstOpt4"]')  // 부품 사전확인
+    ];
+
+    const chipEls = document.querySelectorAll("#quickOptions .chip");
+
+    if (!chipEls.length) {
+        console.warn("No chips found");
+        return;
+    }
+
+    chipEls.forEach((chip, idx) => {
+
+        chip.addEventListener("click", (e) => {
+            e.stopImmediatePropagation && e.stopImmediatePropagation();
+
+            // 선택 상태 토글
+            const nowSelected = chip.classList.toggle("selected");
+
+            // input에 Y 또는 "" 넣기
+            if (optInputs[idx]) {
+                optInputs[idx].value = nowSelected ? "Y" : "";
+            }
+
+            console.log(`rqstOpt${idx + 1}:`, optInputs[idx].value);
+        }, true);
+
+    });
+});
+
+function goSave() {
+    event.preventDefault(); // 기본 동작 방지
+    document.getElementById('reserve-frm').submit();
+}

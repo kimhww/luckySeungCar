@@ -1,0 +1,35 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.luckyRepair.seungme.luckySeungCar.user.menu.lsc.reserve.ReserveDao">
+
+    <insert id="insertReserve" parameterType="com.luckyRepair.seungme.luckySeungCar.user.menu.lsc.reserve.domain.ReserveDomain">
+        INSERT INTO resv_list(resv_sqnc, user_idnt, cate_gub1, cate_gub2, resv_date, resv_time, carr_brnd, carr_modl, resv_desc, rqst_opt1, rqst_opt2, rqst_opt3, rqst_opt4, delc_yorn, resv_stat, work_date, work_idnt, work_ipas)
+        VALUES (#{resvSqnc}, #{userIdnt}, #{cateGub1}, #{cateGub2}, #{resvDate}, #{resvTime}, #{carrBrnd}, #{carrModl}, #{resvDesc}, #{rqstOpt1}, #{rqstOpt2}, #{rqstOpt3}, #{rqstOpt4}, #{delcYorn}, #{resvStat}, #{workDate}, #{workIdnt}, #{workIpas})
+    </insert>
+
+    <select id="selectMaxSqnc" resultType="com.luckyRepair.seungme.luckySeungCar.user.menu.lsc.reserve.domain.ReserveDomain">
+        select max(resv_sqnc) as max_resv_sqnc
+            from resv_list
+    </select>
+
+    <select id="selectMyReserveList" resultType="com.luckyRepair.seungme.luckySeungCar.user.menu.lsc.reserve.domain.ReserveDomain" parameterType="com.luckyRepair.seungme.luckySeungCar.user.menu.lsc.reserve.domain.ReserveDomain">
+        select user_idnt,
+               cate_gub1,
+               cate_gub2,
+               resv_date,
+               resv_time,
+               carr_brnd,
+               carr_modl,
+               resv_desc,
+               rqst_opt1,
+               rqst_opt2,
+               rqst_opt3,
+               rqst_opt4,
+               resv_stat
+        from resv_list
+        where user_idnt = #{userIdnt}
+            and delc_yorn = 'N'
+        order by work_date asc
+    </select>
+
+</mapper>
