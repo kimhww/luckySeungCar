@@ -208,3 +208,10 @@ function goSave() {
     event.preventDefault(); // 기본 동작 방지
     document.getElementById('reserve-frm').submit();
 }
+
+function goDetail(resvSqnc) {
+    event.preventDefault(); // 기본 동작 방지
+    var url = "/menu/lsc/reserve/checkReserveDetail"
+    var param = "?resvSqnc=" + resvSqnc
+    location.href = url+param;
+}

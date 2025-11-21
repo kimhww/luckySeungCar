@@ -19,38 +19,18 @@
         <h2>럭키승카 정비소-예약내역</h2>
         <p>아직은 세부적인 디자인은 안하고 데이터를 표 형식으로만 표시</p>
 
-        <table style="border: 1px solid #ccc; border-collapse: collapse; width: 100%;">
-            <col style="width:5%;">
-            <col style="width:10%;">
-            <col style="width:15%;">
-            <col style="width:20%;">
-            <col style="width:20%;">
-            <col style="width:10%;">
-            <col style="width:10%;">
-            <col style="width:10%;">
-
-            <tr>
-                <th style="border: 1px solid #ccc;padding: 10px;">No</th>
-                <th style="border: 1px solid #ccc;padding: 10px;">차브랜드</th>
-                <th style="border: 1px solid #ccc;padding: 10px;">차모델</th>
-                <th style="border: 1px solid #ccc;padding: 10px;">대분류</th>
-                <th style="border: 1px solid #ccc;padding: 10px;">소분류</th>
-                <th style="border: 1px solid #ccc;padding: 10px;">예약날짜</th>
-                <th style="border: 1px solid #ccc;padding: 10px;">예약시간</th>
-                <th style="border: 1px solid #ccc;padding: 10px;">상태</th>
-            </tr>
-
-            <tr th:each="resv, iterStat : ${myReserveList}">
-                <td th:text="${iterStat.index + 1}" style="border: 1px solid #ccc;padding: 10px;"></td>
-                <td th:text="${resv.carrBrnd}" style="border: 1px solid #ccc;padding: 10px;"></td>
-                <td th:text="${resv.carrModl}" style="border: 1px solid #ccc;padding: 10px;"></td>
-                <td th:text="${resv.cateGub1}" style="border: 1px solid #ccc;padding: 10px;"></td>
-                <td th:text="${resv.cateGub2}" style="border: 1px solid #ccc;padding: 10px;"></td>
-                <td th:text="${resv.resvDate}" style="border: 1px solid #ccc;padding: 10px;"></td>
-                <td th:text="${resv.resvTime}" style="border: 1px solid #ccc;padding: 10px;"></td>
-                <td th:text="${resv.resvStat}" style="border: 1px solid #ccc;padding: 10px;"></td>
-            </tr>
-        </table>
+        <!-- 카드형 예약 목록 -->
+        <div class="card-grid">
+            <div th:each="resv, iterStat : ${myReserveList}" class="reserve-card"
+                 th:data-resv-id="${resv.resvSqnc}"
+                 th:onclick="|goDetail('${resv.resvSqnc}')|">
+                <div><strong>예약날짜:</strong> <span th:text="${resv.resvDate}"></span></div>
+                <div><strong>예약시간:</strong> <span th:text="${resv.resvTime}"></span></div>
+                <div><strong>차브랜드:</strong> <span th:text="${resv.carrBrnd}"></span></div>
+                <div><strong>차모델:</strong> <span th:text="${resv.carrModl}"></span></div>
+                <div><strong>상태:</strong> <span th:text="${resv.resvStat}"></span></div>
+            </div>
+        </div>
     </div>
 </div>
 </body>

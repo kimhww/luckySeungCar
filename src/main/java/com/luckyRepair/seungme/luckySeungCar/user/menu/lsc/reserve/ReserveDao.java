@@ -14,4 +14,6 @@ public interface ReserveDao {
     public ReserveDomain selectMaxSqnc();
 
     List<ReserveDomain> selectMyReserveList(ReserveDomain reserveDomain);
+
+    List<ReserveDomain> selectMyReserveListDetail(ReserveDomain reserveDomain);
 }

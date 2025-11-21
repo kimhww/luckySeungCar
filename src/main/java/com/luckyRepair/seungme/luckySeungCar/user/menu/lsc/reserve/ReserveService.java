@@ -26,4 +26,8 @@ public class ReserveService {
     public List<ReserveDomain> selectMyReserveList(ReserveDomain reserveDomain) {
         return reserveDao.selectMyReserveList(reserveDomain);
     }
+
+    public List<ReserveDomain> selectMyReserveListDetail(ReserveDomain reserveDomain) {
+        return reserveDao.selectMyReserveListDetail(reserveDomain);
+    }
 }

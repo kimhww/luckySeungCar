@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -45,8 +46,21 @@ public class ReserveController {
         return "menu/lsc/reserve/checkReserve";
     }
 
-    @PostMapping("/saveReserve")
-    public String saveReserve(ReserveDomain reserveDomain, HttpServletRequest request) {
+    @GetMapping("/checkReserveDetail")
+    public String checkReserveDetail(@ModelAttribute ReserveDomain reserveDomain, HttpServletRequest request, Model model) {
+        LoginUserInfoDomain loginInfo = (LoginUserInfoDomain) request.getSession().getAttribute(LuckySeungCarConstant.LOGIN_USER);
+
+        reserveDomain.setUserIdnt(loginInfo.getUserIdnt());
+
+        List<ReserveDomain> myReserveListDetail = reserveService.selectMyReserveListDetail(reserveDomain);
+        System.out.println(">>>>myReserveListDetail : " + myReserveListDetail);
+        model.addAttribute("myReserveListDetail", myReserveListDetail);
+
+        return "menu/lsc/reserve/checkReserveDetail";
+}
+
+@PostMapping("/saveReserve")
+public String saveReserve(ReserveDomain reserveDomain, HttpServletRequest request) {
         LoginUserInfoDomain loginInfo = (LoginUserInfoDomain) request.getSession().getAttribute(LuckySeungCarConstant.LOGIN_USER);
 
         ReserveDomain selectMaxSqnc = reserveService.selectMaxSqnc();
