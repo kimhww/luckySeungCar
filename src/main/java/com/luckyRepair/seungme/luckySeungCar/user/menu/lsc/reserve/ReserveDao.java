@@ -1,5 +1,6 @@
 package com.luckyRepair.seungme.luckySeungCar.user.menu.lsc.reserve;
 
+import com.luckyRepair.seungme.luckySeungCar.user.menu.lsc.reserve.domain.ReserveDetailDomain;
 import com.luckyRepair.seungme.luckySeungCar.user.menu.lsc.reserve.domain.ReserveDomain;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
@@ -15,5 +16,5 @@ public interface ReserveDao {
 
     List<ReserveDomain> selectMyReserveList(ReserveDomain reserveDomain);
 
-    List<ReserveDomain> selectMyReserveListDetail(ReserveDomain reserveDomain);
+    public ReserveDetailDomain selectMyReserveListDetail(ReserveDetailDomain reserveDomain);
 }

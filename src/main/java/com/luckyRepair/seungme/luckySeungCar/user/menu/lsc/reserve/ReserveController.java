@@ -2,6 +2,7 @@ package com.luckyRepair.seungme.luckySeungCar.user.menu.lsc.reserve;
 
 import com.luckyRepair.seungme.luckySeungCar.common.LuckySeungCarConstant;
 import com.luckyRepair.seungme.luckySeungCar.main.login.domain.LoginUserInfoDomain;
+import com.luckyRepair.seungme.luckySeungCar.user.menu.lsc.reserve.domain.ReserveDetailDomain;
 import com.luckyRepair.seungme.luckySeungCar.user.menu.lsc.reserve.domain.ReserveDomain;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
@@ -47,12 +48,12 @@ public class ReserveController {
     }
 
     @GetMapping("/checkReserveDetail")
-    public String checkReserveDetail(@ModelAttribute ReserveDomain reserveDomain, HttpServletRequest request, Model model) {
+    public String checkReserveDetail(@ModelAttribute ReserveDetailDomain reserveDetailDomain, HttpServletRequest request, Model model) {
         LoginUserInfoDomain loginInfo = (LoginUserInfoDomain) request.getSession().getAttribute(LuckySeungCarConstant.LOGIN_USER);
 
-        reserveDomain.setUserIdnt(loginInfo.getUserIdnt());
+        reserveDetailDomain.setUserIdnt(loginInfo.getUserIdnt());
 
-        List<ReserveDomain> myReserveListDetail = reserveService.selectMyReserveListDetail(reserveDomain);
+        ReserveDetailDomain myReserveListDetail = reserveService.selectMyReserveListDetail(reserveDetailDomain);
         System.out.println(">>>>myReserveListDetail : " + myReserveListDetail);
         model.addAttribute("myReserveListDetail", myReserveListDetail);
 

@@ -1,5 +1,6 @@
 package com.luckyRepair.seungme.luckySeungCar.user.menu.lsc.reserve;
 
+import com.luckyRepair.seungme.luckySeungCar.user.menu.lsc.reserve.domain.ReserveDetailDomain;
 import com.luckyRepair.seungme.luckySeungCar.user.menu.lsc.reserve.domain.ReserveDomain;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +28,7 @@ public class ReserveService {
         return reserveDao.selectMyReserveList(reserveDomain);
     }
 
-    public List<ReserveDomain> selectMyReserveListDetail(ReserveDomain reserveDomain) {
+    public ReserveDetailDomain selectMyReserveListDetail(ReserveDetailDomain reserveDomain){
         return reserveDao.selectMyReserveListDetail(reserveDomain);
     }
 }
