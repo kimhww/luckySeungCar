@@ -16,8 +16,7 @@
             <span class="wrench"><img th:src="@{/lib/img/wrench.svg}" class="wrenchImg" alt="렌치"></span>
         </div>
 
-        <h2>럭키승카 정비소-예약내역</h2>
-        <p>아직은 세부적인 디자인은 안하고 데이터를 표 형식으로만 표시</p>
+        <h2 class="resv-title">럭키승카 정비소 [예약내역]</h2>
 
         <!-- 카드형 예약 목록 -->
         <div class="card-grid">
@@ -28,7 +27,7 @@
                 <div><strong>예약시간:</strong> <span th:text="${resv.resvTime}"></span></div>
                 <div><strong>차브랜드:</strong> <span th:text="${resv.carrBrnd}"></span></div>
                 <div><strong>차모델:</strong> <span th:text="${resv.carrModl}"></span></div>
-                <div><strong>상태:</strong> <span th:text="${resv.resvStat}"></span></div>
+                <div><strong>상태:</strong> <span th:text="${resv.resvKnam}"></span></div>
             </div>
         </div>
     </div>

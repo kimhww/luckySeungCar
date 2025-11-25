@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
     chips.forEach(c => c.addEventListener('click', () => c.classList.toggle('selected')));
 
     clearBtn.addEventListener('click', () => {
-        document.getElementById('reserveForm').reset();
+        document.getElementById('reserve-frm').reset();
         subEl.innerHTML = '<option value="">대분류 선택 시 자동표시</option>';
         chips.forEach(c => c.classList.remove('selected'));
         display.style.display = 'none';

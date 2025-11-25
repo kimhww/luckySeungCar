@@ -14,7 +14,9 @@ public class ReserveDomain {
     private Integer resvSqnc;
     private String userIdnt;
     private String cateGub1;
+    private String cgb1Knam;
     private String cateGub2;
+    private String cgb2Knam;
     private String resvDate;
     private String resvTime;
     private String carrBrnd;
@@ -26,6 +28,7 @@ public class ReserveDomain {
     private String rqstOpt4;
     private String delcYorn;
     private String resvStat;
+    private String resvKnam;
     private Date workDate;
     private String workIdnt;
     private String workIpas;

@@ -16,7 +16,9 @@
         select user_idnt,
                resv_sqnc,
                cate_gub1,
+               f_comm_code_desc_rtn('2', cate_gub1, '2') as cgb1_knam,
                cate_gub2,
+               f_comm_code_desc_rtn('3', cate_gub2, '2') as cgb2_knam,
                resv_date,
                resv_time,
                carr_brnd,
@@ -26,6 +28,7 @@
                rqst_opt2,
                rqst_opt3,
                rqst_opt4,
+               f_comm_code_desc_rtn('4', resv_stat, '2') as resv_knam,
                resv_stat
         from resv_list
         where user_idnt = #{userIdnt}
@@ -37,7 +40,9 @@
         select user_idnt,
                resv_sqnc,
                cate_gub1,
+               f_comm_code_desc_rtn('2', cate_gub1, '2') as cgb1_knam,
                cate_gub2,
+               f_comm_code_desc_rtn('3', cate_gub2, '2') as cgb2_knam,
                resv_date,
                resv_time,
                carr_brnd,
@@ -47,6 +52,7 @@
                rqst_opt2,
                rqst_opt3,
                rqst_opt4,
+               f_comm_code_desc_rtn('4', resv_stat, '2') as resv_knam,
                resv_stat
             from resv_list
             where user_idnt = #{userIdnt}
