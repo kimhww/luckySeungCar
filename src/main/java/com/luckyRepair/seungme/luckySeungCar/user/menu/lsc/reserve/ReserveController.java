@@ -58,10 +58,10 @@ public class ReserveController {
         model.addAttribute("myReserveListDetail", myReserveListDetail);
 
         return "menu/lsc/reserve/checkReserveDetail";
-}
+    }
 
-@PostMapping("/saveReserve")
-public String saveReserve(ReserveDomain reserveDomain, HttpServletRequest request) {
+    @PostMapping("/saveReserve")
+    public String saveReserve(ReserveDomain reserveDomain, HttpServletRequest request) {
         LoginUserInfoDomain loginInfo = (LoginUserInfoDomain) request.getSession().getAttribute(LuckySeungCarConstant.LOGIN_USER);
 
         ReserveDomain selectMaxSqnc = reserveService.selectMaxSqnc();

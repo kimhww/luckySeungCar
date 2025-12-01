@@ -1,0 +1,65 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.luckyRepair.seungme.luckySeungCar.user.menu.lsc.review.ReviewDao">
+
+    <insert id="insertReview" parameterType="com.luckyRepair.seungme.luckySeungCar.user.menu.lsc.review.domain.ReviewDomain">
+        INSERT INTO revw_list(revw_sqnc, user_idnt, resv_sqnc, revw_scor, revw_desc, delc_yorn, work_date, work_idnt, work_ipas)
+            VALUES (#{revwSqnc}, #{userIdnt}, #{resvSqnc}, #{revwScor}, #{revwDesc}, #{delcYorn}, #{workDate}, #{workIdnt}, #{workIpas})
+    </insert>
+
+    <select id="selectMaxSqnc" resultType="com.luckyRepair.seungme.luckySeungCar.user.menu.lsc.review.domain.ReviewDomain">
+        select max(resv_sqnc) as max_revw_sqnc
+            from revw_list
+    </select>
+
+    <select id="selectMyReviewList" resultType="com.luckyRepair.seungme.luckySeungCar.user.menu.lsc.review.domain.ReviewDomain" parameterType="com.luckyRepair.seungme.luckySeungCar.user.menu.lsc.review.domain.ReviewDomain">
+        select user_idnt,
+               resv_sqnc,
+               cate_gub1,
+               f_comm_code_desc_rtn('2', cate_gub1, '2') as cgb1_knam,
+               cate_gub2,
+               f_comm_code_desc_rtn('3', cate_gub2, '2') as cgb2_knam,
+               resv_date,
+               resv_time,
+               carr_brnd,
+               carr_modl,
+               resv_desc,
+               rqst_opt1,
+               rqst_opt2,
+               rqst_opt3,
+               rqst_opt4,
+               f_comm_code_desc_rtn('4', resv_stat, '2') as resv_knam,
+               resv_stat
+            from resv_list
+            where user_idnt = #{userIdnt}
+                and delc_yorn = 'N'
+                and resv_stat = '3'
+            order by work_date asc
+    </select>
+
+    <select id="selectMyReviewListDetail" resultType="com.luckyRepair.seungme.luckySeungCar.user.menu.lsc.review.domain.ReviewDomain" parameterType="com.luckyRepair.seungme.luckySeungCar.user.menu.lsc.review.domain.ReviewDomain">
+        select user_idnt,
+        resv_sqnc,
+        cate_gub1,
+        f_comm_code_desc_rtn('2', cate_gub1, '2') as cgb1_knam,
+        cate_gub2,
+        f_comm_code_desc_rtn('3', cate_gub2, '2') as cgb2_knam,
+        resv_date,
+        resv_time,
+        carr_brnd,
+        carr_modl,
+        resv_desc,
+        rqst_opt1,
+        rqst_opt2,
+        rqst_opt3,
+        rqst_opt4,
+        f_comm_code_desc_rtn('4', resv_stat, '2') as resv_knam,
+        resv_stat
+        from resv_list
+        where user_idnt = #{userIdnt}
+        and delc_yorn = 'N'
+        and resv_sqnc = #{resvSqnc}
+        order by work_date asc
+    </select>
+
+</mapper>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/defaultLayout}">
+<head>
+    <meta charset="UTF-8">
+    <title>럭키승카 정비소 - 리뷰</title>
+    <link th:inline="css" th:href="|@{/lib/css/menu/lsc/review/review.css}|" rel="stylesheet"/>
+    <script th:inline="javascript" type="text/javascript" th:src="@{/lib/js/menu/lsc/review/review.js}"></script>
+</head>
+<body>
+<div layout:fragment="Content" class="container" role="main" aria-labelledby="mainTitle">
+    <div class="content-box">
+        <div class="header-content" style="margin-bottom:60px;">
+            <div class="logo" aria-hidden="true">
+                <img th:src="@{/lib/img/luckySeungCarLogo.svg}" alt="럭키승카 로고">
+            </div>
+            <div class="title">
+                <h2 id="mainTitle">럭키승카 정비소 리뷰 작성</h2>
+                <p>간편한 예약, 정확한 정비</p>
+            </div>
+        </div>
+
+        <form id="review-frm" name="reviewForm" th:action="@{/menu/lsc/review/saveReview}" method="post">
+            <div class="row">
+                <div class="field">
+                    <label for="userScore">평점</label>
+                    <input type="number" name="revwScor" id="userScore" min="0" max="10" placeholder="0~10" class="input">
+                </div>
+            </div>
+
+            <div class="field" style="margin-bottom:10px;">
+                <label for="requests">상세 리뷰</label>
+                <textarea id="requests" name="revwDesc" placeholder="* 자유롭게 작성 부탁드리겠습니다."></textarea>
+            </div>
+
+            <div class="actions" style="margin-top:20px;">
+                <button class="btn ghost" id="clearBtn" type="button">초기화</button>
+                <button class="btn" id="submitBtn" type="button">작성완료</button>
+            </div>
+
+            <div id="display" aria-live="polite">
+                <div class="preview-card" id="miniPreview"></div>
+            </div>
+        </form>
+    </div>
+
+    <div class="modal-backdrop" id="modalBackdrop" role="dialog" aria-modal="true" aria-hidden="true">
+        <div class="modal" role="document">
+            <h4>작성 확인</h4>
+            <div class="sub">아래 정보를 확인 후 '확인'을 누르면 작성이 완료됩니다.</div>
+            <div id="modalContent" class="group"></div>
+            <div class="footer">
+                <button class="btn-light" id="modalCancel">취소</button>
+                <button class="btn-primary" id="modalConfirm" onclick="goSave();">확인</button>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

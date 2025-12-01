@@ -1,10 +1,20 @@
+:root {
+    --accent: #1177c8;
+    --accent-2: #3aa0ff;
+    --bg: #f4f6f9;
+    --card: #ffffff;
+    --muted: #7b8a99;
+    --radius: 12px;
+    font-family: "Noto Sans KR", "Arial", sans-serif;
+}
+
 h2 {
     margin-bottom: 15px;
     color: #0071BE;
     font-size: 20px;
 }
 
-input {
+/*input {
     width: 100px;
     padding: 8px;
     margin: 10px 0;
@@ -12,7 +22,7 @@ input {
     border-radius: 6px;
     text-align: center;
     font-size: 15px;
-}
+}*/
 
 button {
     margin-top: 12px;
@@ -51,3 +61,239 @@ button:hover {
 .icon {
     font-size: 22px;
 }
+
+.revw-title {
+    margin-bottom:40px;
+}
+
+.card-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px 16px;
+    width: 100%;
+    justify-content: flex-start;
+    box-sizing: border-box;
+}
+
+.review-card {
+    flex: 0 0 calc(50% - 8px);
+    max-width: calc(50% - 8px);
+    background-color: #ffffff;
+    border: 1px solid #d9d9d9;
+    border-radius: 12px;
+    padding: 16px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-sizing: border-box;
+}
+
+.review-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+}
+
+.review-card div {
+    margin-bottom: 8px;
+    font-size: 14px;
+}
+
+.review-card strong {
+    color: #1177c8;
+}
+
+
+/*new*/
+.header-content {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.logo {
+     height: 50px;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     text-align: center;
+     font-size: 16px;
+ }
+
+ .title h2 {
+     margin: 0;
+     color: var(--accent);
+     font-size: 18px;
+ }
+
+ .title p {
+     margin: 0;
+     color: var(--muted);
+     font-size: 12px
+ }
+
+ form .row {
+     display: flex;
+     gap: 10px;
+     margin-bottom: 10px;
+ }
+
+ .field {
+     flex: 1;
+     display: flex;
+     flex-direction: column;
+ }
+
+ label {
+     font-size: 12px;
+     color: var(--muted);
+     margin-bottom: 6px;
+ }
+
+.input, textarea {
+     width: 100%;
+     padding: 10px 12px;
+     border-radius: 10px;
+     border: 1px solid #e3e7ec;
+     font-size: 14px;
+     outline: none;
+     background: #fbfdff;
+     box-sizing: border-box;
+     -webkit-appearance: none;
+     -moz-appearance: none;
+     appearance: none;
+ }
+
+.input:focus, textarea:focus {
+     box-shadow: 0 6px 18px rgba(17,119,200,0.06);
+     border-color: var(--accent-2);
+ }
+
+ textarea {
+     min-height: 80px;
+     resize: vertical;
+ }
+
+ .actions {
+     display: flex;
+     gap: 10px;
+     margin-top: 6px;
+ }
+
+ .btn {
+     flex: 1;
+     padding: 11px;
+     border-radius: 10px;
+     text-align: center;
+     cursor: pointer;
+     border: none;
+     background: var(--accent);
+     color: white;
+     font-size: 14px;
+     font-weight: 600;
+ }
+
+ .btn.ghost {
+     background: transparent;
+     border: 1px solid #e3e7ec;
+     color: var(--muted);
+ }
+
+ #display {
+     margin-top: 14px;
+     display: none;
+ }
+
+ .preview-card {
+     padding: 14px;
+     border-radius: 10px;
+     background: #fbfdff;
+     border: 1px solid #eef6ff;
+     display: flex;
+     flex-direction: column;
+     gap: 8px;
+ }
+
+ .preview-row {
+     display: flex;
+     justify-content: space-between;
+     font-size: 14px;
+     color: #213546;
+ }
+
+ .preview-row small {
+     color: var(--muted);
+     font-size: 12px;
+ }
+
+ .modal-backdrop {
+     position: fixed;
+     inset: 0;
+     background: rgba(8,20,36,0.45);
+     display: none;
+     align-items: center;
+     justify-content: center;
+     z-index: 40;
+ }
+
+ .modal {
+     width: 420px;
+     max-width: 92%;
+     background: var(--card);
+     padding: 18px;
+     border-radius: 14px;
+     box-shadow: 0 25px 60px rgba(12,30,60,0.25);
+ }
+
+ .modal h4 {
+     margin: 0 0 8px 0;
+     color: var(--accent);
+ }
+
+ .modal .sub {
+     font-size: 13px;
+     color: var(--muted);
+     margin-bottom: 12px;
+ }
+
+ .modal .group {
+     display: flex;
+     gap: 8px;
+     flex-wrap: wrap;
+     margin-bottom: 8px;
+ }
+
+ .modal .item {
+     flex: 1 1 45%;
+     background: #fbfdff;
+     padding: 10px;
+     border-radius: 8px;
+     border: 1px solid #eef6ff;
+     font-size: 13px;
+     color: #213546;
+ }
+
+ .modal .footer {
+     display: flex;
+     gap: 8px;
+     justify-content: flex-end;
+     margin-top: 12px;
+ }
+
+ .btn-primary, .btn-light {
+     padding: 10px 12px;
+     border-radius: 8px;
+     cursor: pointer;
+ }
+
+ .btn-primary {
+     background: var(--accent);
+     color: white;
+     border: none;
+ }
+
+ .btn-light {
+     background: transparent;
+     border: 1px solid #e6eef9;
+     color: var(--muted);
+ }

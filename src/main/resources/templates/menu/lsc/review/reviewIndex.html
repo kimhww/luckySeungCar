@@ -6,17 +6,20 @@
     <meta charset="UTF-8">
     <title>럭키승카 정비소 - 리뷰</title>
     <link th:inline="css" th:href="|@{/lib/css/menu/lsc/review/review.css}|" rel="stylesheet"/>
-    <script th:inline="javascript" type="text/javascript" th:src="|@{/lib/js/menu/lsc/review/review.js}|"></script>
+    <script th:inline="javascript" type="text/javascript" th:src="|@{/lib/js/menu/lsc/review/reviewBase.js}|"></script>
 </head>
 <body>
     <div layout:fragment="Content" class="container">
         <div class="content-box">
-            <div class="emoji">⭐🔧</div>
-            <h2>럭키승카 정비소</h2>
-            <input type="number" id="userScore" min="0" max="10" placeholder="0~10">
-            <br>
-            <button onclick="saveScore()">저장</button>
-            <div id="display"></div>
+            <div class="emoji">
+                <span class="star"><img th:src="@{/lib/img/star.svg}" class="starImg" alt="별"></span>
+                <span class="wrench"><img th:src="@{/lib/img/wrench.svg}" class="wrenchImg" alt="렌치"></span>
+            </div>
+
+            <h2>럭키승카 정비소[리뷰]</h2>
+
+            <button th:onclick="startReview();">리뷰작성</button>
+            <button th:onclick="checkReview();">리뷰내역확인</button>
         </div>
     </div>
 </body>
