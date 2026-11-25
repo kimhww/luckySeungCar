@@ -22,6 +22,15 @@
         </div>
 
         <form id="review-frm" name="reviewForm" th:action="@{/menu/lsc/review/saveReview}" method="post">
+            <input type="hidden" name="resvSqnc" th:value="${myReviewListDetail.resvSqnc}">
+
+            <div class="preview-card" style="margin-bottom:16px;">
+                <div class="preview-row"><small>예약일시</small>
+                    <span th:text="|${myReviewListDetail.resvDate} ${myReviewListDetail.resvTime}|"></span></div>
+                <div class="preview-row"><small>차량</small>
+                    <span th:text="|${myReviewListDetail.carrBrnd} ${myReviewListDetail.carrModl}|"></span></div>
+            </div>
+
             <div class="row">
                 <div class="field">
                     <label for="userScore">평점</label>

@@ -21,9 +21,9 @@ public class ReviewService {
         reviewDao.insertReview(domain);
     }
 
-    public ReviewDomain selectMaxSqnc() {
+    /*public ReviewDomain selectMaxSqnc() {
         return reviewDao.selectMaxSqnc();
-    }
+    }*/
 
     public List<ReviewDomain> selectMyReviewList(ReviewDomain reviewDomain) {
         return reviewDao.selectMyReviewList(reviewDomain);
@@ -31,5 +31,17 @@ public class ReviewService {
 
     public ReviewDomain selectMyReviewListDetail(ReviewDomain reviewDomain){
         return reviewDao.selectMyReviewListDetail(reviewDomain);
+    }
+
+    public Integer selectNextRevwSqnc() {
+        return reviewDao.selectNextRevwSqnc();
+    }
+
+    public List<ReviewDomain> selectMyWrittenReviewList(ReviewDomain reviewDomain) {
+        return reviewDao.selectMyWrittenReviewList(reviewDomain);
+    }
+
+    public ReviewDomain selectMyWrittenReviewDetail(ReviewDomain reviewDomain) {
+        return reviewDao.selectMyWrittenReviewDetail(reviewDomain);
     }
 }

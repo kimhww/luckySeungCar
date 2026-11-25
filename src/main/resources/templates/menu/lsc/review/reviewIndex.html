@@ -18,8 +18,8 @@
 
             <h2>럭키승카 정비소[리뷰]</h2>
 
-            <button th:onclick="startReview();">리뷰작성</button>
-            <button th:onclick="checkReview();">리뷰내역확인</button>
+            <button type="button" th:data-url="@{/menu/lsc/review/reviewCheckReserve}" onclick="location.href=this.dataset.url">리뷰작성</button>
+            <button type="button" th:data-url="@{/menu/lsc/review/reviewList}" onclick="location.href=this.dataset.url">리뷰내역확인</button>
         </div>
     </div>
 </body>

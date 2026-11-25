@@ -11,9 +11,15 @@ import java.util.List;
 public interface ReviewDao {
     void insertReview(ReviewDomain reviewDomain);
 
-    public ReviewDomain selectMaxSqnc();
+    /*public ReviewDomain selectMaxSqnc();*/
 
     List<ReviewDomain> selectMyReviewList(ReviewDomain reviewDomain);
 
     public ReviewDomain selectMyReviewListDetail(ReviewDomain reviewDomain);
+
+    Integer selectNextRevwSqnc();
+
+    List<ReviewDomain> selectMyWrittenReviewList(ReviewDomain reviewDomain);
+
+    ReviewDomain selectMyWrittenReviewDetail(ReviewDomain reviewDomain);
 }

@@ -17,10 +17,21 @@
         </div>
 
         <h2 class="revw-title">럭키승카 정비소 [활동내역]</h2>
-        <p>* 아래 활동내역을 클릭하면 리뷰 작성 페이지로 이동됩니다.</p>
+
+        <!-- 작성할 예약이 있을 때만 안내 문구 표시 -->
+        <p th:unless="${#lists.isEmpty(myReviewList)}">* 아래 활동내역을 클릭하면 리뷰 작성 페이지로 이동됩니다.</p>
 
         <!-- 카드형 예약 목록 -->
         <div class="card-grid">
+            <!-- 작성할 예약내역이 없을 때: 카드 자리에 빈 상태 카드 -->
+            <div th:if="${#lists.isEmpty(myReviewList)}" class="review-card empty-card">
+                <div class="empty-title">리뷰를 작성할 수 있는 예약내역이 없습니다.</div>
+                <div class="empty-sub">정비가 완료된 예약이 생기면 이곳에 표시됩니다.</div>
+                <button type="button" th:data-url="@{/menu/lsc/review/reviewList}"
+                        onclick="location.href=this.dataset.url">작성한 리뷰 보기</button>
+            </div>
+
+            <!-- 카드형 예약 목록 -->
             <div th:each="revw, iterStat : ${myReviewList}" class="review-card"
                  th:data-resv-id="${revw.resvSqnc}"
                  th:onclick="|goReviewForm('${revw.resvSqnc}')|">

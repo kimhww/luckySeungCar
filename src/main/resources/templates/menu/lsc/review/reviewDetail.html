@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/defaultLayout}">
+<head>
+    <meta charset="UTF-8">
+    <title>럭키승카 정비소 - 리뷰</title>
+    <link th:inline="css" th:href="|@{/lib/css/menu/lsc/reserve/reserve.css}|" rel="stylesheet"/>
+</head>
+<body>
+<div layout:fragment="Content" class="container">
+    <div class="content-box-table">
+        <div class="emoji">
+            <span class="star"><img th:src="@{/lib/img/star.svg}" class="starImg" alt="별"></span>
+            <span class="wrench"><img th:src="@{/lib/img/wrench.svg}" class="wrenchImg" alt="렌치"></span>
+        </div>
+
+        <h2 class="resv-title">럭키승카 정비소 [리뷰내역 상세]</h2>
+
+        <table class="resv-detail-table">
+            <tr>
+                <th>차브랜드</th>
+                <td th:text="${myReviewDetail.carrBrnd}"></td>
+            </tr>
+            <tr>
+                <th>차모델</th>
+                <td th:text="${myReviewDetail.carrModl}"></td>
+            </tr>
+            <tr>
+                <th>대분류</th>
+                <td th:text="${myReviewDetail.cgb1Knam}"></td>
+            </tr>
+            <tr>
+                <th>소분류</th>
+                <td th:text="${myReviewDetail.cgb2Knam}"></td>
+            </tr>
+            <tr>
+                <th>예약날짜</th>
+                <td th:text="${myReviewDetail.resvDate}"></td>
+            </tr>
+            <tr>
+                <th>예약시간</th>
+                <td th:text="${myReviewDetail.resvTime}"></td>
+            </tr>
+            <tr>
+                <th>평점</th>
+                <td th:text="|${myReviewDetail.revwScor} / 10|"></td>
+            </tr>
+            <tr>
+                <th>상세 리뷰</th>
+                <td th:text="${myReviewDetail.revwDesc}" style="white-space:pre-wrap; word-break:break-all;"></td>
+            </tr>
+            <tr>
+                <th>작성일</th>
+                <td th:text="${#dates.format(myReviewDetail.workDate, 'yyyy-MM-dd HH:mm')}"></td>
+            </tr>
+        </table>
+
+        <button type="button" th:data-url="@{/menu/lsc/review/reviewList}" onclick="location.href=this.dataset.url">목록으로</button>
+    </div>
+</div>
+</body>
+</html>

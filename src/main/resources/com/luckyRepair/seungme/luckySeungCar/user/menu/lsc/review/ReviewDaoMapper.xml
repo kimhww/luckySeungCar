@@ -7,9 +7,35 @@
             VALUES (#{revwSqnc}, #{userIdnt}, #{resvSqnc}, #{revwScor}, #{revwDesc}, #{delcYorn}, #{workDate}, #{workIdnt}, #{workIpas})
     </insert>
 
-    <select id="selectMaxSqnc" resultType="com.luckyRepair.seungme.luckySeungCar.user.menu.lsc.review.domain.ReviewDomain">
+    <!--<select id="selectMaxSqnc" resultType="com.luckyRepair.seungme.luckySeungCar.user.menu.lsc.review.domain.ReviewDomain">
         select max(resv_sqnc) as max_revw_sqnc
             from revw_list
+    </select>-->
+
+    <select id="selectNextRevwSqnc" resultType="java.lang.Integer">
+        select ifnull(max(revw_sqnc), 0) + 1
+        from revw_list
+    </select>
+
+    <!-- 내가 작성한 리뷰 목록 (예약 정보 포함) -->
+    <select id="selectMyWrittenReviewList" parameterType="com.luckyRepair.seungme.luckySeungCar.user.menu.lsc.review.domain.ReviewDomain"
+            resultType="com.luckyRepair.seungme.luckySeungCar.user.menu.lsc.review.domain.ReviewDomain">
+        select r.revw_sqnc,
+        r.revw_scor,
+        r.revw_desc,
+        r.work_date,
+        r.resv_sqnc,
+        v.resv_date,
+        v.resv_time,
+        v.carr_brnd,
+        v.carr_modl,
+        f_comm_code_desc_rtn('2', v.cate_gub1, '2') as cgb1_knam,
+        f_comm_code_desc_rtn('3', v.cate_gub2, '2') as cgb2_knam
+        from revw_list r
+        join resv_list v on v.resv_sqnc = r.resv_sqnc
+        where r.user_idnt = #{userIdnt}
+        and r.delc_yorn = 'N'
+        order by r.work_date desc
     </select>
 
     <select id="selectMyReviewList" resultType="com.luckyRepair.seungme.luckySeungCar.user.menu.lsc.review.domain.ReviewDomain" parameterType="com.luckyRepair.seungme.luckySeungCar.user.menu.lsc.review.domain.ReviewDomain">
@@ -33,7 +59,11 @@
             from resv_list
             where user_idnt = #{userIdnt}
                 and delc_yorn = 'N'
-                and resv_stat = '3'
+        and resv_stat = '3'
+        and not exists (select 1
+        from revw_list r
+        where r.resv_sqnc = resv_list.resv_sqnc
+        and r.delc_yorn = 'N')
             order by work_date asc
     </select>
 
@@ -60,6 +90,26 @@
         and delc_yorn = 'N'
         and resv_sqnc = #{resvSqnc}
         order by work_date asc
+    </select>
+
+    <select id="selectMyWrittenReviewDetail" parameterType="com.luckyRepair.seungme.luckySeungCar.user.menu.lsc.review.domain.ReviewDomain"
+            resultType="com.luckyRepair.seungme.luckySeungCar.user.menu.lsc.review.domain.ReviewDomain">
+        select r.revw_sqnc,
+        r.revw_scor,
+        r.revw_desc,
+        r.work_date,
+        r.resv_sqnc,
+        v.resv_date,
+        v.resv_time,
+        v.carr_brnd,
+        v.carr_modl,
+        f_comm_code_desc_rtn('2', v.cate_gub1, '2') as cgb1_knam,
+        f_comm_code_desc_rtn('3', v.cate_gub2, '2') as cgb2_knam
+        from revw_list r
+        join resv_list v on v.resv_sqnc = r.resv_sqnc
+        where r.user_idnt = #{userIdnt}
+        and r.revw_sqnc = #{revwSqnc}
+        and r.delc_yorn = 'N'
     </select>
 
 </mapper>
